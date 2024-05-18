@@ -23,4 +23,4 @@
 ### Use the [FakeStoreApi](https://fakestoreapi.com/)
 
 
-## Link to the Website: 
+## Link to the Website: [Fake-Store](https://fake-store-87vloj42b-florin12ers-projects.vercel.app/)
