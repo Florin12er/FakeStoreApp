@@ -4,7 +4,7 @@ import { useState } from "react";
 const ProductComponent = (props) => {
   return (
     <>
-      <div className=" border-2 border-solid  border-black w-72 rounded h-96">
+      <div className="mb-5 ml-20 border-2 border-solid  border-black w-72 rounded h-96">
         <h3>{props.name}</h3>
         <p>
           {props.rating}⭐️({props.ratingNumber})
@@ -22,15 +22,36 @@ ProductComponent.propTypes = {
   price: PropTypes.number,
 };
 const Products = () => {
+  const [items, setItems] = useState([
+    { id: 1, name: "Item 1", rating: 20, price: 2, ratingNumber: 2 },
+    { id: 1, name: "Item 1", rating: 20, price: 2, ratingNumber: 2 },
+    { id: 1, name: "Item 1", rating: 20, price: 2, ratingNumber: 2 },
+    { id: 1, name: "Item 1", rating: 20, price: 2, ratingNumber: 2 },
+    { id: 1, name: "Item 1", rating: 20, price: 2, ratingNumber: 2 },
+    { id: 1, name: "Item 1", rating: 20, price: 2, ratingNumber: 2 },
+    { id: 1, name: "Item 1", rating: 20, price: 2, ratingNumber: 2 },
+    { id: 1, name: "Item 1", rating: 20, price: 2, ratingNumber: 2 },
+    { id: 1, name: "Item 1", rating: 20, price: 2, ratingNumber: 2 },
+    { id: 1, name: "Item 1", rating: 20, price: 2, ratingNumber: 2 },
+    { id: 1, name: "Item 1", rating: 20, price: 2, ratingNumber: 2 },
+    { id: 1, name: "Item 1", rating: 20, price: 2, ratingNumber: 2 },
+    { id: 1, name: "Item 1", rating: 20, price: 2, ratingNumber: 2 },
+    { id: 1, name: "Item 1", rating: 20, price: 2, ratingNumber: 2 },
+    { id: 1, name: "Item 1", rating: 20, price: 2, ratingNumber: 2 },
+    { id: 1, name: "Item 1", rating: 20, price: 2, ratingNumber: 2 },
+  ]);
   return (
     <>
-      <div>
-        <ProductComponent
-          name="name"
-          rating="3.8"
-          ratingNumber="100"
-          price="200"
-        />
+      <div className="grid custom-grid-cols">
+        {items.map((item) => (
+          <ProductComponent
+            key={item.id}
+            name={item.name}
+            price={item.price}
+            rating={item.rating}
+            ratingNumber={item.ratingNumber}
+          />
+        ))}
       </div>
     </>
   );

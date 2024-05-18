@@ -1,8 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { Switch } from "@headlessui/react";
 
 const NavBar = () => {
   const location = useLocation();
-
+  const [enabled, setEnabled] = useState(false);
   return (
     <>
       <nav className="flex justify-center p-4">
@@ -35,6 +37,13 @@ const NavBar = () => {
             </Link>
           </li>
         </ul>
+        <Switch
+          checked={enabled}
+          onChange={setEnabled}
+          className="group inline-flex h-9 w-16 items-center rounded-full bg-yellow-500 transition data-[checked]:bg-black"
+        >
+          <span className="size-7 translate-x-1 rounded-full bg-white transition group-data-[checked]:translate-x-8"/>
+        </Switch>
       </nav>
     </>
   );
