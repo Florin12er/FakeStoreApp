@@ -1,10 +1,20 @@
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Switch } from "@headlessui/react";
 
 const NavBar = () => {
   const location = useLocation();
   const [enabled, setEnabled] = useState(false);
+
+ useEffect(() => {
+    if (enabled) {
+      document.body.classList.add('bg-black', 'text-white');
+      document.body.classList.remove('bg-white', 'text-black');
+    } else {
+      document.body.classList.add('bg-white', 'text-black');
+      document.body.classList.remove('bg-black', 'text-white');
+    }
+  }, [enabled]);
   return (
     <>
       <nav className="flex justify-center p-4">
@@ -40,9 +50,15 @@ const NavBar = () => {
         <Switch
           checked={enabled}
           onChange={setEnabled}
-          className="group inline-flex h-9 w-16 items-center rounded-full bg-yellow-500 transition data-[checked]:bg-black"
+          className={`group inline-flex h-9 w-16 items-center rounded-full transition ${
+            enabled ? 'bg-yellow-500' : 'bg-black'
+          }`}
         >
-          <span className="size-7 translate-x-1 rounded-full bg-white transition group-data-[checked]:translate-x-8"/>
+          <span
+            className={`inline-block h-7 w-7 transform rounded-full bg-white transition ${
+              enabled ? 'translate-x-8' : 'translate-x-1'
+            }`}
+          />
         </Switch>
       </nav>
     </>
@@ -50,3 +66,4 @@ const NavBar = () => {
 };
 
 export { NavBar };
+

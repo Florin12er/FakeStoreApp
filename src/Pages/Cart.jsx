@@ -1,6 +1,13 @@
 import PropType from "prop-types";
 import { useState } from "react";
-import { Button, Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@headlessui/react';
+import {
+  Button,
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+  Transition,
+  TransitionChild,
+} from "@headlessui/react";
 
 const CartComponent = (props) => {
   return (
@@ -26,7 +33,10 @@ const CheckoutModal = ({ isOpen, closeModal }) => {
   return (
     <Transition appear show={isOpen}>
       <Dialog as="div" className="relative z-10" onClose={closeModal}>
-        <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm" aria-hidden="true"></div>
+        <div
+          className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm"
+          aria-hidden="true"
+        ></div>
         <div className="fixed inset-0 z-10 overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4 text-center">
             <TransitionChild
@@ -38,12 +48,16 @@ const CheckoutModal = ({ isOpen, closeModal }) => {
               leaveTo="opacity-0 scale-95"
             >
               <DialogPanel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                <DialogTitle as="h3" className="text-lg font-medium leading-6 text-gray-900">
+                <DialogTitle
+                  as="h3"
+                  className="text-lg font-medium leading-6 text-gray-900"
+                >
                   Payment successful
                 </DialogTitle>
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">
-                    Your payment has been successfully submitted. We’ve sent you an email with all of the details of your order.
+                    Your payment has been successfully submitted. We’ve sent you
+                    an email with all of the details of your order.
                   </p>
                 </div>
                 <div className="mt-4">
@@ -64,14 +78,14 @@ const CheckoutModal = ({ isOpen, closeModal }) => {
 };
 
 CheckoutModal.propTypes = {
-    isOpen: PropType.string,
-    closeModal: PropType.string
-}
+  isOpen: PropType.string,
+  closeModal: PropType.string,
+};
 const Cart = () => {
   const [items, setItems] = useState([
+    { id: 3, name: "Item 1", price: 20, quantity: 2 },
     { id: 1, name: "Item 1", price: 20, quantity: 2 },
-{ id: 1, name: "Item 1", price: 20, quantity: 2 },
-{ id: 1, name: "Item 1", price: 20, quantity: 2 },
+    { id: 2, name: "Item 1", price: 20, quantity: 2 },
   ]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -91,7 +105,10 @@ const Cart = () => {
 
   // Calculate total price and total quantity
   const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
-  const totalPrice = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const totalPrice = items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
 
   return (
     <>
@@ -121,4 +138,3 @@ const Cart = () => {
 };
 
 export { Cart };
-

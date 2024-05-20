@@ -13,7 +13,7 @@ const Home = () => {
             <Link to="/products">Shop Now</Link>
           </button>
         </div>
-        <div className="bg-cyan-50">Hello</div>
+        <img src="https://img.freepik.com/free-vector/shop-with-sign-open-design_23-2148544029.jpg?t=st=1716230487~exp=1716234087~hmac=ea1dde9bd89f4ce2e4645eca6aab77c3b353aeb8ccf4becc11397ef18f512782&w=1380" />
       </div>
     </>
   );
