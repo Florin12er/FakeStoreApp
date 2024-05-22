@@ -53,8 +53,9 @@ Cart.propTypes = {
     })).isRequired,
 };
 
-const Products = ({ onAddToCart }) => {
+const Products = () => {
     const [items, setItems] = useState([]);
+    const [cart, setCart] = useState([]);
 
     useEffect(() => {
         fetch("https://fakestoreapi.com/products")
@@ -73,25 +74,28 @@ const Products = ({ onAddToCart }) => {
             .catch((err) => console.error("Error fetching products:", err));
     }, []);
 
+    const handleAddToCart = (item) => {
+        setCart([...cart, item]);
+    };
+
     return (
-        <div className="grid custom-grid-cols">
-            {items.map((item) => (
-                <ProductComponent
-                    key={item.id}
-                    name={item.name}
-                    price={item.price}
-                    rating={item.rating}
-                    ratingNumber={item.ratingNumber}
-                    image={item.image}
-                    onAddToCart={() => onAddToCart(item)}
-                />
-            ))}
+        <div>
+            <div className="grid custom-grid-cols">
+                {items.map((item) => (
+                    <ProductComponent
+                        key={item.id}
+                        name={item.name}
+                        price={item.price}
+                        rating={item.rating}
+                        ratingNumber={item.ratingNumber}
+                        image={item.image}
+                        onAddToCart={() => handleAddToCart(item)}
+                    />
+                ))}
+            </div>
+            <Cart cartItems={cart} />
         </div>
     );
-};
-
-Products.propTypes = {
-    onAddToCart: PropTypes.func.isRequired,
 };
 
 export { Products };

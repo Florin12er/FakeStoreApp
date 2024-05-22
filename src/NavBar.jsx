@@ -1,20 +1,24 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Switch } from "@headlessui/react";
+import PropTypes from "prop-types";
 
-const NavBar = () => {
+const NavBar = ({ cartItems }) => {
   const location = useLocation();
   const [enabled, setEnabled] = useState(false);
 
- useEffect(() => {
+  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  useEffect(() => {
     if (enabled) {
-      document.body.classList.add('bg-black', 'text-white');
-      document.body.classList.remove('bg-white', 'text-black');
+      document.body.classList.add("bg-black", "text-white");
+      document.body.classList.remove("bg-white", "text-black");
     } else {
-      document.body.classList.add('bg-white', 'text-black');
-      document.body.classList.remove('bg-black', 'text-white');
+      document.body.classList.add("bg-white", "text-black");
+      document.body.classList.remove("bg-black", "text-white");
     }
   }, [enabled]);
+
   return (
     <>
       <nav className="flex justify-center p-4">
@@ -44,6 +48,11 @@ const NavBar = () => {
               className={`focus:border-b-4 focus:border-red-500 ${location.pathname === "/cart" ? "border-b-4 border-red-500" : ""}`}
             >
               Cart
+              {totalQuantity > 0 && (
+                <span className="ml-2 bg-red-500 text-white rounded-full px-2 py-1 text-xs">
+              {totalQuantity}
+                </span>
+              )}
             </Link>
           </li>
         </ul>
@@ -51,18 +60,29 @@ const NavBar = () => {
           checked={enabled}
           onChange={setEnabled}
           className={`group inline-flex h-9 w-16 items-center rounded-full transition ${
-            enabled ? 'bg-yellow-500' : 'bg-black'
+            enabled ? "bg-yellow-500" : "bg-black"
           }`}
         >
           <span
             className={`inline-block h-7 w-7 transform rounded-full bg-white transition ${
-              enabled ? 'translate-x-8' : 'translate-x-1'
+              enabled ? "translate-x-8" : "translate-x-1"
             }`}
           />
         </Switch>
       </nav>
     </>
   );
+};
+
+NavBar.propTypes = {
+  cartItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      quantity: PropTypes.number.isRequired,
+    })
+  ).isRequired,
 };
 
 export { NavBar };

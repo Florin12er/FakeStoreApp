@@ -9,11 +9,14 @@ const Home = () => {
             Buy cool things from <br />
             this shop that is totally real
           </p>
-          <button className="bg-rose-300 p-3 rounded">
+          <button className="bg-red-300 hover:bg-red-500 p-3 rounded">
             <Link to="/products">Shop Now</Link>
           </button>
         </div>
-        <img className="w-9/12" src="https://img.freepik.com/free-vector/shop-with-sign-open-design_23-2148544029.jpg?t=st=1716230487~exp=1716234087~hmac=ea1dde9bd89f4ce2e4645eca6aab77c3b353aeb8ccf4becc11397ef18f512782&w=1380" />
+        <img
+          className="w-9/12"
+          src="https://img.freepik.com/free-vector/shop-with-sign-open-design_23-2148544029.jpg?t=st=1716230487~exp=1716234087~hmac=ea1dde9bd89f4ce2e4645eca6aab77c3b353aeb8ccf4becc11397ef18f512782&w=1380"
+        />
       </div>
     </>
   );

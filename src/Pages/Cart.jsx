@@ -12,12 +12,14 @@ import {
 const CartComponent = ({ name, image, price, quantity, onRemove }) => {
     return (
         <>
-            <div className="border-solid border-2 border-black rounded ml-4 mb-4 w-80 ">
-                <img className="w-48 ml-8" src={image} />
-                <h3 className="text-2xl text-center">{name}</h3>
-                <p className="text-center">${price}</p>
-                <p className="text-center">Quantity: {quantity}</p>
-                <button className="bg-red-300 ml-28 rounded p-3" onClick={onRemove}>Remove</button>
+            <div className="border-solid border-2 border-black rounded ml-4 mb-4 w-80 h-96">
+                <img className="w-32 ml-8" src={image} />
+                <h3 className="text-center font-bold">{name}</h3>
+                <p className="text-center font-bold">{price}$</p>
+                <p className="text-center mb-2">Quantity:     <span className="bg-red-500 text-white rounded-full px-2 py-1 text-xs">
+              {quantity}
+                </span></p>
+                <button className="bg-red-300 hover:bg-red-500 ml-28 rounded p-3" onClick={onRemove}>Remove</button>
             </div>
         </>
     );
@@ -64,7 +66,7 @@ const CheckoutModal = ({ isOpen, closeModal }) => {
                                 </div>
                                 <div className="mt-4">
                                     <Button
-                                        className="inline-flex justify-center rounded-md border border-transparent bg-red-200 px-4 py-2 text-sm font-medium text-black hover:bg-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                                        className="inline-flex justify-center rounded-md border border-transparent bg-red-300 px-4 py-2 text-sm font-medium text-black hover:bg-red-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                                         onClick={closeModal}
                                     >
                                         Got it, thanks!
@@ -124,12 +126,17 @@ const Cart = ({ cartItems, setCart }) => {
                     ))}
                 </div>
                 <div>
-                    <h2>Summary</h2>
-                    <p>Total Quantity: {totalQuantity}</p>
-                    <p>Total Price: ${totalPrice.toFixed(2)}</p>
+                    <h2 className="text-5xl">Summary:</h2>
+                    <p className="font-bold mb-4 mt-4">Total Quantity:  
+    <span className="bg-red-500 text-white rounded-full px-2 py-1 text-xs">
+              {totalQuantity}
+                </span>
+
+                    </p>
+                    <p className="font-bold mb-4">Total Price: ${totalPrice.toFixed(2)}</p>
                     <button
                         onClick={handleCheckout}
-                        className="bg-red-300 text-black p-2 rounded"
+                        className="bg-red-300 hover:bg-red-500 text-black p-2 rounded"
                     >
                         Checkout
                     </button>

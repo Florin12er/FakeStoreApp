@@ -26,7 +26,7 @@ function App() {
 
   return (
     <>
-      <NavBar />
+      <NavBar cartItems={cart} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products onAddToCart={handleAddToCart} />} />
