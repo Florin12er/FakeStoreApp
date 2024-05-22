@@ -18,7 +18,7 @@ const NavBar = () => {
   return (
     <>
       <nav className="flex justify-center p-4">
-        <h1 className="text-3xl mr-auto ml-5">
+        <h1 className="text-5xl mr-auto ">
           <Link to="/">Fakeshop</Link>
         </h1>
         <ul className="flex justify-center gap-4 mr-5">

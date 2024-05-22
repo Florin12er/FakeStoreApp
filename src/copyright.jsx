@@ -3,7 +3,7 @@ const Copyright = () => {
     <>
       <footer className="w-screen h-16 flex justify-center place-items-center bg-violet-500 text-white">
         <p> Copyright © 2024 Florin12er </p>
-        <a href="https://github.com/Florin12er">
+        <a href="https://github.com/Florin12er/FakeStoreApp">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30px"
