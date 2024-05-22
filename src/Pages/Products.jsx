@@ -10,7 +10,7 @@ const ProductComponent = ({ name, rating, ratingNumber, price, image, onAddToCar
                 {rating}⭐️ ({ratingNumber})
             </p>
             <h2 className="font-bold mb-1">{price}$</h2>
-            <button className="bg-red-300 rounded p-2" onClick={onAddToCart}>Add to cart</button>
+            <button className="bg-red-300 hover:bg-red-500 rounded p-2" onClick={onAddToCart}>Add to cart</button>
         </div>
     );
 };
@@ -53,9 +53,8 @@ Cart.propTypes = {
     })).isRequired,
 };
 
-const Products = () => {
+const Products = ({ onAddToCart }) => {
     const [items, setItems] = useState([]);
-    const [cart, setCart] = useState([]);
 
     useEffect(() => {
         fetch("https://fakestoreapi.com/products")
@@ -74,28 +73,25 @@ const Products = () => {
             .catch((err) => console.error("Error fetching products:", err));
     }, []);
 
-    const handleAddToCart = (item) => {
-        setCart([...cart, item]);
-    };
-
     return (
-        <div>
-            <div className="grid custom-grid-cols">
-                {items.map((item) => (
-                    <ProductComponent
-                        key={item.id}
-                        name={item.name}
-                        price={item.price}
-                        rating={item.rating}
-                        ratingNumber={item.ratingNumber}
-                        image={item.image}
-                        onAddToCart={() => handleAddToCart(item)}
-                    />
-                ))}
-            </div>
-            <Cart cartItems={cart} />
+        <div className="grid custom-grid-cols">
+            {items.map((item) => (
+                <ProductComponent
+                    key={item.id}
+                    name={item.name}
+                    price={item.price}
+                    rating={item.rating}
+                    ratingNumber={item.ratingNumber}
+                    image={item.image}
+                    onAddToCart={() => onAddToCart(item)}
+                />
+            ))}
         </div>
     );
+};
+
+Products.propTypes = {
+    onAddToCart: PropTypes.func.isRequired,
 };
 
 export { Products };
