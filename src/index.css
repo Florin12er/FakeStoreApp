@@ -5,12 +5,39 @@
 body {
     overflow-x: hidden;
 }
-.custom-grid-cols {
-    grid-template-columns: repeat(5, 350px);
-}
+
 .custom-height {
-    height: 91vh
+    height: 91vh;
 }
+
 .custom-width {
     width: 100vh;
 }
+
+.custom-grid-cols {
+    grid-template-columns: repeat(5, 350px);
+}
+
+@media (max-width: 2560px) {
+    .custom-grid-cols {
+        grid-template-columns: repeat(6, 350px);
+    }
+}
+
+@media (max-width: 1920px) {
+    .custom-grid-cols {
+        grid-template-columns: repeat(5, 350px);
+    }
+}
+@media (max-width: 1181px) {
+    .custom-grid-cols {
+        grid-template-columns: repeat(2, 350px);
+    }
+}
+@media (max-width: 428px) {
+    .custom-grid-cols {
+        grid-template-columns: repeat(1, 350px);
+    }
+}
+
+

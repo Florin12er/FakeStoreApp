@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
+import { Button } from "@headlessui/react";
 
 const ProductComponent = ({ name, rating, ratingNumber, price, image, onAddToCart }) => {
     return (
@@ -10,7 +11,7 @@ const ProductComponent = ({ name, rating, ratingNumber, price, image, onAddToCar
                 {rating}⭐️ ({ratingNumber})
             </p>
             <h2 className="font-bold mb-1">{price}$</h2>
-            <button className="bg-red-300 hover:bg-red-500 rounded p-2" onClick={onAddToCart}>Add to cart</button>
+            <Button className="bg-red-300 hover:bg-red-500 rounded p-2" onClick={onAddToCart}>Add to cart</Button>
         </div>
     );
 };

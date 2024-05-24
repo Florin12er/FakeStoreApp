@@ -1,17 +1,19 @@
 import { Link } from "react-router-dom";
+import { Button } from "@headlessui/react";
+
 const Home = () => {
   return (
     <>
       <div className="grid grid-cols-2 custom-height place-items-center">
         <div className="text-center">
-          <h1 className="text-6xl mb-8">Fakeshop</h1>
-          <p className="text-3xl mb-8">
+          <h1 className="text-6xl mb-8 max-sm:text-2xl">Fakeshop</h1>
+                    <p className="text-3xl mb-8 max-sm:text-2xl">
             Buy cool things from <br />
             this shop that is totally real
           </p>
-          <button className="bg-red-300 hover:bg-red-500 p-3 rounded">
+          <Button className="bg-red-300 hover:bg-red-500 p-3 rounded">
             <Link to="/products">Shop Now</Link>
-          </button>
+          </Button>
         </div>
         <img
           className="w-9/12"

@@ -11,25 +11,25 @@ const NavBar = ({ cartItems }) => {
 
   useEffect(() => {
     if (enabled) {
-      document.body.classList.add("bg-black", "text-white");
-      document.body.classList.remove("bg-white", "text-black");
+      document.body.classList.add("bg-gray-500", "text-black");
+      document.body.classList.remove("bg-white", "text-white");
     } else {
       document.body.classList.add("bg-white", "text-black");
-      document.body.classList.remove("bg-black", "text-white");
+      document.body.classList.remove("bg-gray-500", "text-black");
     }
   }, [enabled]);
 
   return (
     <>
       <nav className="flex justify-center p-4">
-        <h1 className="text-5xl mr-auto ">
+                <h1 className="text-5xl mr-auto max-sm:text-2xl">
           <Link to="/">Fakeshop</Link>
         </h1>
         <ul className="flex justify-center gap-4 mr-5">
           <li>
             <Link
               to="/"
-              className={`focus:border-b-4 focus:border-red-500 ${location.pathname === "/" ? "border-b-4 border-red-500" : ""}`}
+              className={`focus:border-b-4 focus:border-red-300 ${location.pathname === "/" ? "border-b-4 border-red-300" : ""}`}
             >
               Home
             </Link>
@@ -37,7 +37,7 @@ const NavBar = ({ cartItems }) => {
           <li>
             <Link
               to="/products"
-              className={`focus:border-b-4 focus:border-red-500 ${location.pathname === "/products" ? "border-b-4 border-red-500" : ""}`}
+              className={`focus:border-b-4 focus:border-red-300 ${location.pathname === "/products" ? "border-b-4 border-red-300" : ""}`}
             >
               Products
             </Link>
@@ -45,12 +45,12 @@ const NavBar = ({ cartItems }) => {
           <li>
             <Link
               to="/cart"
-              className={`focus:border-b-4 focus:border-red-500 ${location.pathname === "/cart" ? "border-b-4 border-red-500" : ""}`}
+              className={`focus:border-b-4 focus:border-red-300 ${location.pathname === "/cart" ? "border-b-4 border-red-300" : ""}`}
             >
               Cart
               {totalQuantity > 0 && (
-                <span className="ml-2 bg-red-500 text-white rounded-full px-2 py-1 text-xs">
-              {totalQuantity}
+                <span className="ml-2 bg-red-300 text-white rounded-full px-2 py-1 text-xs">
+                {totalQuantity}
                 </span>
               )}
             </Link>

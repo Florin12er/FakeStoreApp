@@ -19,7 +19,7 @@ const CartComponent = ({ name, image, price, quantity, onRemove }) => {
                 <p className="text-center mb-2">Quantity:     <span className="bg-red-500 text-white rounded-full px-2 py-1 text-xs">
               {quantity}
                 </span></p>
-                <button className="bg-red-300 hover:bg-red-500 ml-28 rounded p-3" onClick={onRemove}>Remove</button>
+                <Button className="bg-red-300 hover:bg-red-500 ml-28 rounded p-3" onClick={onRemove}>Remove</Button>
             </div>
         </>
     );
@@ -134,12 +134,12 @@ const Cart = ({ cartItems, setCart }) => {
 
                     </p>
                     <p className="font-bold mb-4">Total Price: ${totalPrice.toFixed(2)}</p>
-                    <button
+                    <Button
                         onClick={handleCheckout}
                         className="bg-red-300 hover:bg-red-500 text-black p-2 rounded"
                     >
                         Checkout
-                    </button>
+                    </Button>
                 </div>
             </div>
             <CheckoutModal isOpen={isModalOpen} closeModal={closeModal} />
